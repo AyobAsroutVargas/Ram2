@@ -1,0 +1,15 @@
+# Programa que lee los elementos la cinta de entrada hasta
+# que encuentre un 0 y copia los valores leídos a la cinta 
+# de salida (el valor 0 no se copia)
+
+        load =0
+        store 1
+lee:	read 2[1]
+			load 2[1]
+			jzero fin
+			write 2[1]
+            load 1
+            add =1
+            store 1
+			jump lee
+fin:	halt

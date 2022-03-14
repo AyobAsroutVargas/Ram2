@@ -1,0 +1,65 @@
+        load =0
+        store 1
+        load =0
+        store 5
+#Leemos la cinta de entrada hasta que encontremos un 0 y lo guardamos todo en R1
+lee:	read 2[1]
+			load 2[1]
+			jzero for1
+            load 5
+            add =1
+            store 5
+            load 1
+            add =1
+            store 1
+	        jump lee
+#n = R5, i = R1, j = R3, temp = R4, j+1 = R6, n-2 = R7
+for1:       load =0
+            store 1
+            load 5
+            sub =2
+            store 7
+jumpfor1:   load 1
+            sub 7
+            jgtz finfor1
+            load 5
+            sub =1
+            store 3
+for2:       load 1
+            sub 3
+            jgtz finfor2
+            load 3
+            sub =1
+            store 6
+            load 2[3]
+            sub 2[6]
+            jgtz finif
+            load 2[6]
+            store 4
+            load 2[3]
+            store 2[6]
+            load 4
+            store 2[3]
+finif:
+            load 3
+            sub =1
+            store 3
+            jump for2
+finfor2:
+            load 1
+            add =1
+            store 1
+            jump jumpfor1
+finfor1:
+
+escribe:    load =0
+            store 1
+jumpscrib:  load 1
+            sub 5
+            jzero fin
+            write 2[1]
+            load 1
+            add =1
+            store 1
+            jump jumpscrib
+fin:	halt
